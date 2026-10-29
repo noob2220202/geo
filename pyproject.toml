@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geo-tool"
+version = "0.1.0"
+description = "원클릭 GEO(생성형 엔진 최적화) 진단 및 수정안 생성 도구"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+ai = ["anthropic>=2.3.0"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+geo = "geo_tool.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["geo_tool*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
